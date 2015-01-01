@@ -1,0 +1,21 @@
+[core]
+	excludesfile = /Users/alvaro/.gitignore_global
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[user]
+	name = alvaro garcia
+	#email = agarcia@gmaur.com
+	email = derecerca@gmail.com
+
+[alias]
+	c = commit -m 
+	s = status
+	aa = add --all
+	a = add
+	g = log --pretty --graph --oneline
+#problem: adds two times the parameter
+#	i = !echo "$@" >> .gitignore
