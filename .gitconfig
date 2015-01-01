@@ -13,9 +13,11 @@
 
 [alias]
 	c = commit -m 
+	ca = commit --amend -m
 	s = status
 	aa = add --all
 	a = add
 	g = log --pretty --graph --oneline
+	d = diff
 #problem: adds two times the parameter
 #	i = !echo "$@" >> .gitignore
