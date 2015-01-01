@@ -13,6 +13,7 @@
 
 [alias]
 	c = commit -m 
+	cg = commit -m "green"
 	ca = commit --amend -m
 	s = status
 	aa = add --all
