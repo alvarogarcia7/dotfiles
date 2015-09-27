@@ -1,0 +1,15 @@
+[user]
+	name = Alvaro Garcia
+[gui]
+	editor = vim
+[branch]
+	autosetuprebase = always
+
+[alias]
+	a=add
+	aa=add --all
+	s=status
+	c=commit -m
+	cc=commit --all -m
+	cam=commit --amend -m
+	d=diff
