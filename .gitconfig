@@ -13,3 +13,5 @@
 	cc=commit --all -m
 	cam=commit --amend -m
 	d=diff
+	dl=diff -n1 -p
+	la=log format="%aN %aE %cN %cE"
