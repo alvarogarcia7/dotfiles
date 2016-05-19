@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Converts Windows path separators into *nix path separator
+# dospath "\A\ccc\AA" => /A/ccc/AA
+# dospath \A\ccc\AA   => AcccAA
+# echo \A\ccc\AA      => AcccAA
+
+echo "$@"|sed 's/\\/\//g'
