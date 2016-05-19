@@ -8,17 +8,22 @@
 	trustExitCode = true
 [user]
 	name = alvaro garcia
-	#email = agarcia@gmaur.com
-	email = derecerca@gmail.com
 
 [alias]
 	c = commit -m 
+	cc = commit --all -m 
+	ccr = commit --all -m "refactor: $2"
 	cg = commit -m "green"
-	ca = commit --amend -m
+	ccg = commit --all -m "green"
+	cam = commit --amend -m
 	s = status
 	aa = add --all
 	a = add
 	g = log --pretty --graph --oneline
+	l = log -n1
 	d = diff
+	dl = diff HEAD^1
 #problem: adds two times the parameter
 #	i = !echo "$@" >> .gitignore
+[push]
+	default = simple
