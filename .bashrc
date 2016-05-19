@@ -1,2 +1,2 @@
-alias g="git"
+alias t="git"
 export PATH=$PATH:~/bin
