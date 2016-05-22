@@ -26,6 +26,7 @@
 	logauthors=log --format="%aN %aE %cN %cE"
 	workwith=!cat ~/bin/pair_with.sh
 	unchanged=update-index --assume-unchanged 
+	no-unchanged=update-index --no-assume-unchanged 
 #problem: adds two times the parameter
 #	i = !echo "$@" >> .gitignore
 [push]
