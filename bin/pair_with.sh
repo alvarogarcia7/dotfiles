@@ -1,4 +1,4 @@
-
+#!/bin/bash
 
 # for more information, see http://alvarogarcia7.github.io/blog/2016/02/14/two-persons-involved-in-a-git-commit/
 
