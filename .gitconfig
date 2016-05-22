@@ -23,7 +23,7 @@
 	l = log -n1
 	d = diff
 	dl=log -n1 -p
-	logauthors=log format="%aN %aE %cN %cE"
+	logauthors=log --format="%aN %aE %cN %cE"
 #problem: adds two times the parameter
 #	i = !echo "$@" >> .gitignore
 [push]
