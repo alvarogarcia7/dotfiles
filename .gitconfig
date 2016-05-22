@@ -11,6 +11,7 @@
 
 [alias]
 	c = commit -m 
+	ce = commit --allow-empty -m 
 	cc = commit --all -m 
 	cg = commit -m "green"
 	ccg = commit --all -m "green"
