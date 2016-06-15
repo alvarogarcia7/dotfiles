@@ -1,3 +1,5 @@
+# Source: https://github.com/holman/dotfiles/blob/bca0de21ee89eb634526774cfd157e72e1422231/script/bootstrap
+# Attribution: Zach Holman (@holman) and contributors
 #!/usr/bin/env bash
 #
 # bootstrap installs things.
