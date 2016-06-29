@@ -6,6 +6,8 @@ export JAVA_HOME=$(/usr/libexec/java_home)
 
 alias c=clear
 alias t="git"
+alias keepassx="/Applications/KeePassX.app/Contents/MacOS/KeePassX"
 export PATH=$PATH:~/bin
+export EDITOR=vim
 
 source ~/.extra
