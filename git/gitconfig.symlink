@@ -29,6 +29,7 @@
 	no-unchanged=update-index --no-assume-unchanged 
 #problem: adds two times the parameter
 #	i = !echo "$@" >> .gitignore
+	p = pull
 [push]
 	default = simple
 [gui]
