@@ -102,6 +102,11 @@ function docker_rm_all () {
   docker ps -a | awk '{print $1}' | grep -v CONTAINER|xargs docker rm
 }
 
+function docker_cleanup () {
+  docker rmi $(docker images -q -f dangling=true)
+  docker volume rm $(docker volume ls -qf dangling=true)
+}
+
 ## alias mm
 alias de="source default-env.sh"
 alias nrd="npm run dev"
