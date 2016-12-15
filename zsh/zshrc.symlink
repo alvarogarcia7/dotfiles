@@ -110,10 +110,13 @@ function docker_cleanup () {
 ## alias mm
 alias de="source default-env.sh"
 alias nrd="npm run dev"
+alias standard="$(npm prefix)/node_modules/standard/bin/cmd.js --fix"
 
 ## Node specifics
 export NVM_DIR="/Users/alvaro/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+alias npm_i="npm install --loglevel warn"
 
 ## autojump
 [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
