@@ -125,3 +125,7 @@ function title() {
   window_title="\e]0;$1\a"
   echo -ne "$window_title"
 }
+
+## commit using another date
+## alter the `date` command
+alias fcc="git commit --date=\"\$(date -v-9H)\" -am"
