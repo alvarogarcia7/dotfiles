@@ -1,4 +1,6 @@
 
+## Commit at another date/time
+
 ```bash
 ➜  vim-simulator git:(master) ✗ date
 Thu Mar 16 18:50:50 GMT 2017
