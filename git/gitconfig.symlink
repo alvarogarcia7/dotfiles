@@ -11,11 +11,7 @@
 
 [alias]
 	c = !git commit --date=\"$(date -v${GIT_DATE_DELTA:-+0H})\" -m 
-	ce = commit --allow-empty -m 
 	cc = commit --all -m 
-	cg = commit -m "green"
-	ccg = commit --all -m "green"
-	cam = commit --amend -m
 	s = status
 	aa = add --all
 	a = add
