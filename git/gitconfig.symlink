@@ -10,8 +10,9 @@
     # see file ~/.extra
 
 [alias]
-	c = !git commit --date=\"$(date -v${GIT_DATE_DELTA:-+0H})\" -m 
-	cc = commit --all -m 
+	commitatdate = !git commit --date=\"$(date -v${GIT_DATE_DELTA:-+0H})\" 
+	c = !git commitatdate -m 
+	cc = !git commitatdate --all -m 
 	s = status
 	aa = add --all
 	a = add
