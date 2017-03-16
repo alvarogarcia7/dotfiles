@@ -10,7 +10,7 @@
     # see file ~/.extra
 
 [alias]
-	c = commit -m 
+	c = !git commit --date=\"$(date -v${GIT_DATE_DELTA:-+0H})\" -m 
 	ce = commit --allow-empty -m 
 	cc = commit --all -m 
 	cg = commit -m "green"
