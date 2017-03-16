@@ -1,6 +1,18 @@
 
 ## Commit at another date/time
 
+Set the variable `$GIT_DATE_DELTA` to commit at another date/time
+
+This parameter is the delta with the current time datetime.
+
+Accepted values:
+
+```bash
+[+|-]val[ymwdHMS]]
+```
+
+### Sample usage
+
 ```bash
 ➜  vim-simulator git:(master) ✗ date
 Thu Mar 16 18:50:50 GMT 2017
