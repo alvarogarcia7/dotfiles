@@ -11,3 +11,6 @@ export PATH=$PATH:~/bin
 export EDITOR=vim
 
 source ~/.extra
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
