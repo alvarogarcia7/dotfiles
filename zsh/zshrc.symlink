@@ -133,10 +133,23 @@ alias fcc="git commit --date=\"\$(date -v-9H)\" -am"
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 
-function chpwd() {
-    emulate -L zsh
-    if [[ -e ".env.sh" ]]; then
-        source .env.sh
+source_env() {
+    1=$(realpath $1)
+    echo "at $1"
+    if [[ "$1" != "/" ]]; then
+        source_env "$1/.."
+        env_file="$1/.env.sh"
+        if [[ -e $env_file ]]; then
+            echo "found env at: $env_file"
+            #source $env_file 
+        fi
     fi
 }
 
+function chpwd() {
+    emulate -L zsh
+    source_env "."
+}
+
+
+export PATH="$HOME/.yarn/bin:$PATH"
