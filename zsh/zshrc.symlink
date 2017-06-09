@@ -135,13 +135,13 @@ export PATH="$PATH:$HOME/.rvm/bin"
 
 source_env() {
     1=$(realpath $1)
-    echo "at $1"
+    #echo "at $1"
     if [[ "$1" != "/" ]]; then
         source_env "$1/.."
         env_file="$1/.env.sh"
         if [[ -e $env_file ]]; then
-            echo "found env at: $env_file"
-            #source $env_file 
+            #echo "found env at: $env_file"
+            source $env_file 
         fi
     fi
 }
