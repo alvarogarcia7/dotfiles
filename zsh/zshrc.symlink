@@ -153,3 +153,9 @@ function chpwd() {
 
 
 export PATH="$HOME/.yarn/bin:$PATH"
+
+function pair_with_ {
+  export GIT_COMMITTER_NAME="$1"
+  export GIT_COMMITTER_EMAIL="$2"
+} 
+
