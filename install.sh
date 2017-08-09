@@ -4,6 +4,7 @@
 #
 # bootstrap installs things.
 
+original_folder=$(pwd -P)
 cd "$(dirname "$0")/.."
 DOTFILES_ROOT=$(pwd -P)
 
@@ -117,7 +118,21 @@ install_dotfiles () {
   done
 }
 
+install_binfiles () {
+  info 'installing bin files'
+
+  local overwrite_all=false backup_all=false skip_all=false
+
+  for src in $(find -H "$original_folder/bin" -maxdepth 1 -name '*sh' -not -path '*.git*')
+  do
+    echo "found $src"
+    dst="$HOME/bin/$(basename "${src}")"
+    link_file "$src" "$dst"
+  done
+}
+
 install_dotfiles
+install_binfiles
 
 echo ''
 echo '  All installed!'
