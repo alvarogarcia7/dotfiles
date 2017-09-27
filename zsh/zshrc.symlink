@@ -159,3 +159,9 @@ function pair_with_ {
   export GIT_COMMITTER_EMAIL="$2"
 } 
 
+function add_1_day_to_git_commit_date {
+  previous_date=$(git log -n1 --format="%at" --date=raw)
+  new_date=$((24*3600 + $previous_date))
+  commit=$(git log -n1 --format="%H")
+  git commit --amend --date="$new_date" --reuse-message="$commit"
+}
