@@ -10,7 +10,7 @@
     # see file ~/.extra
 
 [alias]
-	commitatdate = !git commit --date=\"$(date -v${GIT_DATE_DELTA:-+0H})\" 
+	commitatdate = !bash commitatdate.sh 
 	c = !git commitatdate -m 
 	cc = !git commitatdate --all -m 
 	s = status
