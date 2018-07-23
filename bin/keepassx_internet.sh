@@ -2,5 +2,5 @@
 
 set -e
 
-keepassx.sh $HOME/Documents/keepass/Internet.kdbx & > /dev/null
+keepassx.sh "$HOME/Documents/keepass/Internet.kdbx" > /dev/null &
 
