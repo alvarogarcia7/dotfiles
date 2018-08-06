@@ -1,7 +1,6 @@
 #!/bin/bash
 
 set -e
-set -x
 
 source ~/.bashrc
 
@@ -40,7 +39,8 @@ function open {
 }
 
 function push_backups {
-  git push
+  git push origin
+  git push codecommit
 }
 
 cd "$(dirname "$file")"
