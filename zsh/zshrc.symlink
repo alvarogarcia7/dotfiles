@@ -165,3 +165,7 @@ function add_1_day_to_git_commit_date {
   commit=$(git log -n1 --format="%H")
   git commit --amend --date="$new_date" --reuse-message="$commit"
 }
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/alvaro/.sdkman"
+[[ -s "/Users/alvaro/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/alvaro/.sdkman/bin/sdkman-init.sh"
