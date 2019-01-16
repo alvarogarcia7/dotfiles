@@ -110,7 +110,7 @@ function docker_cleanup () {
 ## alias mm
 alias de="source default-env.sh"
 alias nrd="npm run dev"
-alias standard="$(npm prefix)/node_modules/standard/bin/cmd.js --fix"
+#alias standard="$(npm prefix)/node_modules/standard/bin/cmd.js --fix"
 
 ## Node specifics
 export NVM_DIR="/Users/alvaro/.nvm"
