@@ -26,6 +26,11 @@ function backup_after {
   set -e
 }
 
+function update {
+  git pull origin master
+  git pull codecommit master
+}
+
 
 function open {
   keepass="keypass"
@@ -44,6 +49,7 @@ function push_backups {
 }
 
 cd "$(dirname "$file")"
+update "$file"
 backup "$file"
 open "$file"
 backup_after "$file"
