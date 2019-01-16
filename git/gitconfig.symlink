@@ -38,3 +38,7 @@
 	editor = vim
 [branch]
 	autosetuprebase = always
+[mergetool "diffmerge"]
+    #cmd = /Users/alvaro/bin/diff-wrapper.sh
+    cmd = "/Users/alvaro/bin/diff-wrapper.sh \"$LOCAL\" \"$REMOTE\""
+
