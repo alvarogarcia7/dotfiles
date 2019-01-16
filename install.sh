@@ -123,6 +123,10 @@ install_binfiles () {
 
   local overwrite_all=false backup_all=false skip_all=false
 
+  set +e
+  mkdir "$HOME/bin"
+  set -e
+
   for src in $(find -H "$original_folder/bin" -maxdepth 1 -name '*sh' -not -path '*.git*')
   do
     echo "found $src"
