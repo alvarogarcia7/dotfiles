@@ -127,7 +127,7 @@ install_binfiles () {
   mkdir "$HOME/bin"
   set -e
 
-  for src in $(find -H "$original_folder/bin" -maxdepth 1 -name '*sh' -not -path '*.git*')
+  for src in $(find -H "$original_folder/bin" -maxdepth 1 -not -path '*.git*')
   do
     echo "found $src"
     dst="$HOME/bin/$(basename "${src}")"
