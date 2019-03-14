@@ -2,7 +2,7 @@ export M3_HOME="/Users/alvaro/Applications/maven-3.2.5/bin"
 export PATH=$PATH:$M3_HOME:~/Applications/lein:~/Applications/gradle-2.4/bin
 
 #set java home
-export JAVA_HOME=$(/usr/libexec/java_home)
+#export JAVA_HOME=$(/usr/libexec/java_home)
 
 alias c=clear
 alias t="git"
@@ -14,3 +14,7 @@ source ~/.extra
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/alvaro/.sdkman"
+[[ -s "/Users/alvaro/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/alvaro/.sdkman/bin/sdkman-init.sh"
