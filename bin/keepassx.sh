@@ -11,8 +11,8 @@ function backup {
   ini=${date}-$(basename "$file")
 
   set +e
-  git add "$file"
-  git commit -m "$ini"
+  git add . 
+  git commit -m "${date}-ini"
   set -e
 }
 
@@ -21,8 +21,8 @@ function backup_after {
   destination=${date}-finsesion-$(basename "$file")
 
   set +e
-  git add "$file"
-  git commit -m "$destination"
+  git add .
+  git commit -m "${date}-finsesion"
   set -e
 }
 
