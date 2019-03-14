@@ -8,7 +8,7 @@ This parameter is the delta with the current time datetime.
 Accepted values:
 
 ```bash
-[+|-]val[ymwdHMS]]
+[+|-]val[ymwdHMS]
 ```
 
 ### Sample usage
