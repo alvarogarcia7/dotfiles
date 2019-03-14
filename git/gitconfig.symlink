@@ -15,6 +15,7 @@
 [alias]
 	commitatdate = !bash commitatdate.sh 
 	c = !git commitatdate -m 
+	ca = !git commitatdate --amend --reset-author -m 
 	cc = !git commitatdate --all -m 
 	s = status
 	aa = add --all
