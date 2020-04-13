@@ -22,7 +22,7 @@
 	a = add
 	g = log --pretty --graph --oneline
 	l = log -n1
-	d = diff
+	d = diff --color-words
 	dl=log -n1 -p
 	logauthors=log --format="%aN %aE %cN %cE"
 	workwith=!cat ~/bin/pair_with.sh
