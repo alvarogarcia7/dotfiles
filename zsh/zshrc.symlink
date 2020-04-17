@@ -133,6 +133,7 @@ alias fcc="git commit --date=\"\$(date -v-9H)\" -am"
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 
+## For documentation on how to use this, see ../bin/_env.sh
 source_env() {
     1=$(realpath $1)
     #echo "at $1"
