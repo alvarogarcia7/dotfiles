@@ -153,7 +153,7 @@ function chpwd() {
 }
 
 
-export PATH="$HOME/.yarn/bin:$PATH"
+export PATH="$HOME/.yarn/bin:/Users/alvaro/Library/Python/2.7/bin:$PATH"
 
 function pair_with_ {
   export GIT_COMMITTER_NAME="$1"
@@ -168,6 +168,12 @@ function add_1_day_to_git_commit_date {
   commit=$(git log -n1 --format="%H")
   git commit --amend --date="$new_date" --reuse-message="$commit"
 }
+
+export PATH="$PATH:$HOME/Documents/project/apiumhub/docker_registry/node_modules/.bin/"
+
+## Functions to configure the current sdk
+source ~/.sdkmanrc
+
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/Users/alvaro/.sdkman"

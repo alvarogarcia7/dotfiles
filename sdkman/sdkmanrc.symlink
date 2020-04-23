@@ -1,0 +1,7 @@
+function sdk_use_java_14(){
+  java -version 2>&1 | grep -q "openjdk version \"14\"" || sdk use java 14.0.0.j9-adpt
+}
+
+function sdk_use_java_11(){
+  java -version 2>&1|grep -q "11\.0\.1" || sdk use java 11.0.1-zulu
+}
