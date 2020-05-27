@@ -105,6 +105,14 @@ link_file () {
   fi
 }
 
+install_sublime (){
+
+  info 'installing sublime configuration (As of 2020-05, not tested)'
+  cd ~/.config/sublime-text-3/Packages
+  mv User User_backup || true #this folder might not exist
+  ln -s ~/dotfiles/sublime/ User
+}
+
 install_dotfiles () {
   info 'installing dotfiles'
 
@@ -137,6 +145,8 @@ install_binfiles () {
 
 install_dotfiles
 install_binfiles
+
+install_sublime
 
 echo ''
 echo '  All installed!'
