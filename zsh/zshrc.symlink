@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/alvaro/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -89,7 +89,7 @@ export LANG=en_US.UTF-8
 alias c=clear
 alias f="git"
 alias ls="ls -G"
-alias keepassx="/Applications/KeePassX.app/Contents/MacOS/KeePassX"
+alias keepassx="keeweb"
 export PATH=$PATH:~/bin
 export EDITOR=vim
 
@@ -117,9 +117,6 @@ export NVM_DIR="/Users/alvaro/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 alias npm_i="npm install --loglevel warn"
-
-## autojump
-[[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
 
 function title() {
   window_title="\e]0;$1\a"
@@ -153,8 +150,6 @@ function chpwd() {
 }
 
 
-export PATH="$HOME/.yarn/bin:/Users/alvaro/Library/Python/2.7/bin:$PATH"
-
 function pair_with_ {
   export GIT_COMMITTER_NAME="$1"
   export GIT_COMMITTER_EMAIL="$2"
@@ -169,12 +164,3 @@ function add_1_day_to_git_commit_date {
   git commit --amend --date="$new_date" --reuse-message="$commit"
 }
 
-export PATH="$PATH:$HOME/Documents/project/apiumhub/docker_registry/node_modules/.bin/"
-
-## Functions to configure the current sdk
-source ~/.sdkmanrc
-
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/Users/alvaro/.sdkman"
-[[ -s "/Users/alvaro/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/alvaro/.sdkman/bin/sdkman-init.sh"
