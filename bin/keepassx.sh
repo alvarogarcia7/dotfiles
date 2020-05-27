@@ -28,16 +28,21 @@ function backup_after {
 
 function update {
   git pull origin master
-  git pull codecommit master
+  #git pull codecommit master
 }
 
 
 function open {
-  keepass="keypass"
 
-  if [[ -z $(command -v keepassx) ]]; then
+  keepass=""
+  if [[ "$OSTYPE" == "linux-gnu"* ]]; then #linux
+    keepass="keeweb"
+  elif [[ "$OSTYPE" == "darwin"* ]]; then # Mac OSX
     #keepass="/Applications/KeePassX.app/Contents/MacOS/KeePassX"
     keepass="/Applications/KeeWeb.app/Contents/MacOS/KeeWeb"
+  else
+    echo "This script is not supported for this operating system '$OSTYPE'"
+    exit -1
   fi
 
   $keepass "$file"
