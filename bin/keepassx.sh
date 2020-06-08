@@ -2,8 +2,6 @@
 
 set -e
 
-source ~/.bashrc
-
 file=$1 #in absolute path
 
 function backup {
