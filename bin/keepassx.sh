@@ -48,7 +48,7 @@ function open {
 
 function push_backups {
   git push origin
-  git push codecommit
+  #git push codecommit
 }
 
 cd "$(dirname "$file")"
