@@ -164,3 +164,13 @@ function add_1_day_to_git_commit_date {
   git commit --amend --date="$new_date" --reuse-message="$commit"
 }
 
+alias -s md="subl"
+alias ki="keepassx_internet.sh"
+alias ks="keepassx_sha.sh"
+
+
+# fzf shortcuts
+## docker
+
+alias docker_kill="docker ps | fzf -m | grep -v CONTAINER | awk '{print $1}' | xargs docker kill"
+
