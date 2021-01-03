@@ -146,7 +146,6 @@ install_binfiles () {
 install_dotfiles
 install_binfiles
 
-install_sublime
 
 echo ''
 echo '  All installed!'
