@@ -174,3 +174,4 @@ alias ks="keepassx_sha.sh"
 
 alias docker_kill="docker ps | fzf -m | grep -v CONTAINER | awk '{print $1}' | xargs docker kill"
 
+export PATH="$PATH:$HOME/.sdkman/"

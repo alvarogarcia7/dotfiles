@@ -115,6 +115,7 @@ install_sublime (){
 
 install_dotfiles () {
   info 'installing dotfiles'
+  info 'If this fails (using zsh), please try it again with bash'
 
   local overwrite_all=false backup_all=false skip_all=false
 
