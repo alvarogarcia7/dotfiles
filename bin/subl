@@ -6,9 +6,9 @@ set -euo pipefail
 # Detect the operating system.
 # Source: https://stackoverflow.com/questions/394230/how-to-detect-the-os-from-a-bash-script
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then #linux
-  /opt/sublime_text/sublime_text --new-window $@
+  /opt/sublime_text/sublime_text --new-window "$@"
 elif [[ "$OSTYPE" == "darwin"* ]]; then # Mac OSX
-  "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" --new-window $@
+  "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" --new-window "$@"
 else
   echo "This script is not supported for this operating system '$OSTYPE'"
   exit -1 
