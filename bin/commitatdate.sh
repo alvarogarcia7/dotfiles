@@ -15,13 +15,22 @@ else
   elif [[ "$OSTYPE" == "darwin"* ]]; then # Mac OSX
     # An example:
     # export GIT_DATE_DELTA="-2H"
-    export GIT_COMMITTER_DATE=$(date -v "$GIT_DATE_DELTA")
-    export GIT_AUTHOR_DATE=$(date -v "$GIT_DATE_DELTA")
+    if [ -z ${TZ+x} ]; then
+      # TZ is unset
+      export GIT_COMMITTER_DATE=$(date -v "$GIT_DATE_DELTA")
+    else
+      export GIT_COMMITTER_DATE=$(TZ=$TZ date -v "$GIT_DATE_DELTA")
+    fi
+    export GIT_AUTHOR_DATE="$GIT_COMMITTER_DATE"
   else
     echo "This script is not supported for this operating system '$OSTYPE'"
     exit -1 
   fi
 fi
 
+# For normal usage
 git commit "$@"
+
+# For amending / rebasing
+#git commit --allow-empty --amend --date "$GIT_COMMITTER_DATE"
 
