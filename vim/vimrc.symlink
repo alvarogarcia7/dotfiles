@@ -24,6 +24,11 @@ nnoremap t :wa <bar> :!make test <CR>
 "<bar> separates two commands
 "<CR> is the carriage return
 
+" Add date in normal mode
+:nnoremap <F5> "=strftime("%Y-%m-%d %H:%M:%S AGB")<CR>P
+" Add date in insert mode
+:inoremap <F5> <C-R>=strftime("%Y-%m-%d %H:%M:%S AGB")<CR>
+
 " jump to the last position when reopening a file
 if has("autocmd")
       au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
