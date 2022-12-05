@@ -194,6 +194,7 @@ alias docker_kill="docker ps | fzf -m | grep -v CONTAINER | awk '{print $1}' | x
 cd .
 
 export PATH="$PATH:$HOME/.sdkman/"
+export PATH="/opt/homebrew/opt/python@3.10/bin:$PATH"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/Users/alvaro/.sdkman"
