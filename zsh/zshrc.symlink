@@ -190,6 +190,7 @@ alias ks="keepassx_sha.sh"
 
 alias docker_kill="docker ps | fzf -m | grep -v CONTAINER | awk '{print $1}' | xargs docker kill"
 
+# Load all .env.sh configurations. Most useful for executing these in CLion/similar
 cd .
 
 export PATH="$PATH:$HOME/.sdkman/"
