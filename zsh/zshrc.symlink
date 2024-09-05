@@ -194,6 +194,13 @@ function remove_12_hours_from_git_commit_date {
   GIT_AUTHOR_DATE="$new_date" GIT_COMMITTER_DATE="$new_date" git commit --amend --date="$new_date" --reuse-message="$commit"
 }
 
+function git_set_aD_and_cD_to_the_same_value {
+  previous_date=$(git log -n1 --format="%at" --date=raw)
+  new_date=$(($previous_date - 0))
+  commit=$(git log -n1 --format="%H")
+  GIT_AUTHOR_DATE="$new_date" GIT_COMMITTER_DATE="$new_date" git commit --amend --date="$new_date" --reuse-message="$commit"
+}
+
 function add_delta_seconds_from_git_commit_date {
   previous_date=$(git log -n1 --format="%at" --date=raw)
   new_date=$(($previous_date + $1))
