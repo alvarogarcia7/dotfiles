@@ -154,6 +154,7 @@ install_binfiles () {
 
 install_dotfiles
 install_binfiles
+install_doom_emacs
 
 
 echo ''
