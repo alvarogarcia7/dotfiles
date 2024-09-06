@@ -173,11 +173,32 @@ function pair_with_ {
 
 alias beep="tput bel"
 
+function new_date {
+  previous_date=$(git log -n1 --format="%at" --date=raw)
+  new_date=$((-12*3600 + $previous_date))
+  commit=$(git log -n1 --format="%H")
+  GIT_AUTHOR_DATE="$new_date" GIT_COMMITTER_DATE="$new_date" git commit --amend --date="$new_date" --reuse-message="$commit"
+}
+# https://stackoverflow.com/questions/19742345/what-is-the-format-for-date-parameter-of-git-commit
 function add_1_day_to_git_commit_date {
   previous_date=$(git log -n1 --format="%at" --date=raw)
   new_date=$((24*3600 + $previous_date))
   commit=$(git log -n1 --format="%H")
-  git commit --amend --date="$new_date" --reuse-message="$commit"
+  GIT_AUTHOR_DATE="$new_date" GIT_COMMITTER_DATE="$new_date" git commit --amend --date="$new_date" --reuse-message="$commit"
+}
+
+function remove_12_hours_from_git_commit_date {
+  previous_date=$(git log -n1 --format="%at" --date=raw)
+  new_date=$(($previous_date - 12*3600))
+  commit=$(git log -n1 --format="%H")
+  GIT_AUTHOR_DATE="$new_date" GIT_COMMITTER_DATE="$new_date" git commit --amend --date="$new_date" --reuse-message="$commit"
+}
+
+function add_delta_seconds_from_git_commit_date {
+  previous_date=$(git log -n1 --format="%at" --date=raw)
+  new_date=$(($previous_date + $1))
+  commit=$(git log -n1 --format="%H")
+  GIT_AUTHOR_DATE="$new_date" GIT_COMMITTER_DATE="$new_date" git commit --amend --date="$new_date" --reuse-message="$commit"
 }
 
 alias -s md="subl"
