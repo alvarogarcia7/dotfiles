@@ -113,6 +113,14 @@ install_sublime (){
   ln -s ~/dotfiles/sublime/ User
 }
 
+install_doom_emacs (){
+
+  info 'installing doom emacs configuration (As of 2023-09, not tested)'
+  mkdir -p ~/.config/
+  ln -s ~/dotfiles/.config/doom ~/.config/doom
+}
+
+
 install_dotfiles () {
   info 'installing dotfiles'
   info 'If this fails (using zsh), please try it again with bash'
