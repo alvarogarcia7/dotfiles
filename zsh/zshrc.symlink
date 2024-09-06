@@ -216,7 +216,7 @@ cd .
 
 export PATH="$PATH:$HOME/.sdkman/"
 export PATH="/opt/homebrew/opt/python@3.10/bin:$PATH"
-export PATH="$PATH:$HOME/.config/emacs/bin/"
+export PATH="$PATH:$HOME/.config/emacs/bin"
 
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
