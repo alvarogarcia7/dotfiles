@@ -141,7 +141,7 @@ function title() {
 
 ## commit using another date
 ## alter the `date` command
-alias fcc="git commit --date=\"\$(date -v-9H)\" -am"
+alias fcc="git commit --date=\"\$(date -v-12H)\" -am"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
