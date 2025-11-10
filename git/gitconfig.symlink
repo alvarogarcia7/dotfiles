@@ -1,5 +1,5 @@
 [core]
-	excludesfile = /Users/alvaro/.gitignore_global
+	excludesFile = ~/.gitignore
 	autocrlf = input
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
