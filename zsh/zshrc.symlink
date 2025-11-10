@@ -230,3 +230,7 @@ export PATH="$PATH:$HOME/.config/emacs/bin"
 export SDKMAN_DIR="/Users/alvaro/.sdkman"
 [[ -s "/Users/alvaro/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/alvaro/.sdkman/bin/sdkman-init.sh"
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+
+export PATH=$PATH:/Users/alvaro/.local/bin
+
+git config --global core.excludesFile '~/.gitignore'
