@@ -1,0 +1,33 @@
+integration@ubuntu-integration:~/cco$ mv ../2025-11-14_cosmian-deployment/VCS.md .
+integration@ubuntu-integration:~/cco$ fg
+vim ~/.bin/mkdirdate
+#!/bin/bash
+set -euo pipefail
+
+usage() {
+  echo "Usage: $0 <folder_name>"
+  exit 1
+}
+
+get_date() {
+  local date_str
+  date_str=$(date +%Y-%m-%d)
+  echo "$date_str" # Note: this is the return
+}
+
+create_dir() {
+  local name="$1"
+  local date_str
+  date_str=$(get_date)
+  local dir_name="${date_str}_$name"
+  mkdir -p "$dir_name"
+}
+
+main() {
+  if [[ $# -ne 1 ]]; then
+    usage
+  fi
+  create_dir "$1"
+}
+
+main "$@"
