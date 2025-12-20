@@ -30,7 +30,7 @@
 	no-unchanged=update-index --no-assume-unchanged 
 #problem: adds two times the parameter
 #	i = !echo "$@" >> .gitignore
-	p = pull --prune
+	p = pull --prune --autostash
     pruneold = !git branch -r | awk '{print $1}' | egrep -v -f /dev/fd/0 < $(git branch -vv | grep origin) | awk '{print $1}' | xargs git branch -d 
 	pruneoldforce = !git branch -r | awk '{print $1}' | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) | awk '{print $1}' | xargs git branch -D
 [push]
