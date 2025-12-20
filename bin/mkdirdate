@@ -1,6 +1,3 @@
-integration@ubuntu-integration:~/cco$ mv ../2025-11-14_cosmian-deployment/VCS.md .
-integration@ubuntu-integration:~/cco$ fg
-vim ~/.bin/mkdirdate
 #!/bin/bash
 set -euo pipefail
 
