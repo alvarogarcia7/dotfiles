@@ -218,20 +218,19 @@ alias ks="keepassx_sha.sh"
 ## docker
 
 alias docker_kill="docker ps | fzf -m | grep -v CONTAINER | awk '{print $1}' | xargs docker kill"
+alias vim=nvim
+alias vi=nvim
 
 # Load all .env.sh configurations. Most useful for executing these in CLion/similar
 cd .
 
 export PATH="$PATH:$HOME/.sdkman/"
 export PATH="/opt/homebrew/opt/python@3.10/bin:$PATH"
+# Doom Emacs
 export PATH="$PATH:$HOME/.config/emacs/bin"
+export PATH="$HOME/.emacs.d/bin:$PATH"
 
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/Users/alvaro/.sdkman"
-[[ -s "/Users/alvaro/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/alvaro/.sdkman/bin/sdkman-init.sh"
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
-
 export PATH="$PATH:/Users/alvaro/.local/bin:$HOME/.local/bin"
 
 git config --global core.excludesFile '~/.gitignore'
@@ -240,3 +239,11 @@ git config --global core.excludesFile '~/.gitignore'
 
 # Added by Antigravity
 export PATH="/Users/alvaro/.antigravity/antigravity/bin:$PATH"
+
+export PATH="/opt/homebrew/opt/openjdk@11/bin:$PATH"
+
+. "$HOME/.local/bin/env"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/alvaro/.sdkman"
+[[ -s "/Users/alvaro/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/alvaro/.sdkman/bin/sdkman-init.sh"
