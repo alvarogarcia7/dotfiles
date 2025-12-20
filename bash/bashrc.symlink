@@ -19,3 +19,5 @@ export PATH="$PATH:$HOME/.rvm/bin"
 export SDKMAN_DIR="/Users/alvaro/.sdkman"
 [[ -s "/Users/alvaro/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/alvaro/.sdkman/bin/sdkman-init.sh"
 . "$HOME/.cargo/env"
+
+. "$HOME/.local/bin/env"
