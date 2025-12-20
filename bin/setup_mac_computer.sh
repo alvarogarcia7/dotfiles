@@ -11,6 +11,24 @@ brew install coreutils
 # NeoVim - https://medium.com/@jogarcia/install-neovim-on-debian-based-c4392a726320
 brew install nvim
 
+# How to install
+#https://nvchad.com/docs/quickstart/install
+
+# Fonts
+#https://www.nerdfonts.com/font-downloads - Monaspice
+
+#Specifically, these ones:
+#Downloads/Monaspace/MonaspiceNeNerdFont-Bold.otf
+#Downloads/Monaspace/MonaspiceNeNerdFont-BoldItalic.otf
+#Downloads/Monaspace/MonaspiceNeNerdFont-Italic.otf
+#Downloads/Monaspace/MonaspiceNeNerdFont-Light.otf
+#Downloads/Monaspace/MonaspiceNeNerdFont-LightItalic.otf
+#Downloads/Monaspace/MonaspiceNeNerdFont-Medium.otf
+#Downloads/Monaspace/MonaspiceNeNerdFont-MediumItalic.otf
+#Downloads/Monaspace/MonaspiceNeNerdFont-Regular.otf
+
+git clone https://github.com/NvChad/starter ~/.config/nvim && nvim
+
 # As of 2025-12-20 23:18:32 AGB, this are the installed packages:
 #autoconf
 #automake
