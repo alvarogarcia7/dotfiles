@@ -102,6 +102,7 @@ export LANG=en_US.UTF-8
 
 
 
+alias m=make
 alias c=clear
 alias f="git"
 alias ls="ls -G"
@@ -231,6 +232,11 @@ export SDKMAN_DIR="/Users/alvaro/.sdkman"
 [[ -s "/Users/alvaro/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/alvaro/.sdkman/bin/sdkman-init.sh"
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 
-export PATH=$PATH:/Users/alvaro/.local/bin
+export PATH="$PATH:/Users/alvaro/.local/bin:$HOME/.local/bin"
 
 git config --global core.excludesFile '~/.gitignore'
+
+. "$HOME/.local/bin/env"
+
+# Added by Antigravity
+export PATH="/Users/alvaro/.antigravity/antigravity/bin:$PATH"
