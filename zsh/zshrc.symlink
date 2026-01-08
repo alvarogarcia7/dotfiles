@@ -235,6 +235,9 @@ export PATH="$PATH:/Users/alvaro/.local/bin:$HOME/.local/bin"
 
 git config --global core.excludesFile '~/.gitignore'
 
+# uv and other executables
+export PATH="$PATH:$HOME/.local/bin/"
+
 . "$HOME/.local/bin/env"
 
 # Added by Antigravity
