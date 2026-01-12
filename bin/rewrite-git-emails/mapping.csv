@@ -1,0 +1,136 @@
+# Git Author/Committer Mapping Template
+# =======================================
+# This CSV file is used by scripts/rewrite-authors.sh to rewrite Git history,
+# changing author and committer identities across all commits.
+#
+# IMPORTANT: This operation rewrites Git history. Use with caution!
+#
+# CSV FORMAT:
+# -----------
+# The CSV must contain the following 8 columns in this exact order:
+#   1. author_name_from      - Original author name to match (case-sensitive)
+#   2. committer_name_from   - Original committer name to match (case-sensitive)
+#   3. author_email_from     - Original author email to match (case-sensitive)
+#   4. committer_email_from  - Original committer email to match (case-sensitive)
+#   5. author_name_to        - New author name (what it should become)
+#   6. committer_name_to     - New committer name (what it should become)
+#   7. author_email_to       - New author email (what it should become)
+#   8. committer_email_to    - New committer email (what it should become)
+#
+# FIELD FORMAT RULES:
+# -------------------
+# - Names: Can contain letters, spaces, hyphens, apostrophes, and Unicode characters
+#          Examples: "John Doe", "Mary O'Brien", "Jean-Pierre Müller", "李明"
+# - Emails: Must be valid email format (user@domain.tld)
+#          Examples: "user@example.com", "john.doe@company.org"
+# - Whitespace: Leading/trailing spaces in fields are automatically trimmed
+# - Special Characters: If a field contains commas, wrap it in double quotes
+#                      Examples: "Doe, John", "O'Brien, Mary"
+# - Quote Escaping: To include a quote in a quoted field, use double quotes
+#                  Example: "John ""The Dev"" Doe"
+# - Empty Fields: Not recommended, but if needed, leave blank between commas
+#
+# COMMON SCENARIOS:
+# -----------------
+# 1. Name Change Only: Change name but keep same email
+#    Use case: Developer changed their display name
+#
+# 2. Email Change Only: Keep same name but change email
+#    Use case: Developer changed companies or email addresses
+#
+# 3. Full Identity Change: Change both name and email
+#    Use case: Correct misattributed commits or merge duplicate identities
+#
+# 4. Normalize Variations: Map multiple variations to a single canonical identity
+#    Use case: Same person used different name spellings or email addresses
+#
+# TIPS:
+# -----
+# - Run "git log --all --format='%an <%ae> | %cn <%ce>'" to see all current identities
+# - Run "git shortlog -sne --all" to see author statistics
+# - Use scripts/verify-authors.sh after rewriting to verify the changes
+# - Test with --dry-run flag first: scripts/rewrite-authors.sh --dry-run mapping.csv
+# - Create a backup before running: the script does this automatically
+# - In most cases, author and committer are the same person (same FROM and TO values)
+#
+# EDGE CASES:
+# -----------
+# - Unicode/International Names: Fully supported (UTF-8 encoding)
+# - Hyphenated Names: No special handling needed
+# - Names with Apostrophes: No escaping needed unless combined with commas
+# - Corporate Email Formats: Examples shown below (firstname.lastname@company.com)
+# - Plus Addressing: Supported (user+tag@example.com)
+# - Multiple Dots in Emails: Supported (first.middle.last@example.com)
+#
+# =======================================
+
+# Header row (REQUIRED - do not modify or remove)
+author_name_from,committer_name_from,author_email_from,committer_email_from,author_name_to,committer_name_to,author_email_to,committer_email_to
+
+# Example 1: Full identity change (both name and email)
+# Use case: Correcting misattributed commits from old identity
+John Doe,John Doe,john.old@example.com,john.old@example.com,John Smith,John Smith,john.smith@newcompany.com,john.smith@newcompany.com
+
+# Example 2: Name-only change (email stays the same)
+# Use case: Developer legally changed their name
+Jane Developer,Jane Developer,jane@example.com,jane@example.com,Jane Smith-Developer,Jane Smith-Developer,jane@example.com,jane@example.com
+
+# Example 3: Email-only change (name stays the same)
+# Use case: Moved to different email while keeping same name
+Alice Johnson,Alice Johnson,alice@oldcompany.com,alice@oldcompany.com,Alice Johnson,Alice Johnson,alice.johnson@newcompany.com,alice.johnson@newcompany.com
+
+# Example 4: Normalizing name variations (fixing typos or inconsistencies)
+# Use case: Same person used slightly different name spellings
+Bob Smith,Bob Smith,bob@example.com,bob@example.com,Robert Smith,Robert Smith,bob@example.com,bob@example.com
+
+# Example 5: Normalizing email variations (consolidating multiple emails)
+# Use case: Developer used personal email for some commits, work email for others
+Robert Smith,Robert Smith,bob.personal@gmail.com,bob.personal@gmail.com,Robert Smith,Robert Smith,bob@example.com,bob@example.com
+
+# Example 6: Name with apostrophe
+# Use case: Names with apostrophes don't need special escaping
+Mary O'Brien,Mary O'Brien,mary@example.com,mary@example.com,Mary O'Brien-Smith,Mary O'Brien-Smith,mary.obrien@example.com,mary.obrien@example.com
+
+# Example 7: Hyphenated name
+# Use case: Hyphenated names are handled naturally
+Jean-Pierre Dubois,Jean-Pierre Dubois,jp@example.com,jp@example.com,Jean-Pierre Dubois-Martin,Jean-Pierre Dubois-Martin,jpdubois@example.com,jpdubois@example.com
+
+# Example 8: Name with comma (requires quotes around the field)
+# Use case: If you need to store name in "Last, First" format
+"Doe, John","Doe, John",johndoe@example.com,johndoe@example.com,John Doe,John Doe,john.doe@company.com,john.doe@company.com
+
+# Example 9: Unicode/International characters
+# Use case: Names with accents, umlauts, or non-Latin scripts
+François Müller,François Müller,francois@example.com,francois@example.com,François Müller,François Müller,f.muller@company.de,f.muller@company.de
+
+# Example 10: Chinese/Japanese/Korean names
+# Use case: Full Unicode support for international team members
+李明,李明,liming@example.com,liming@example.com,李明,李明,li.ming@company.cn,li.ming@company.cn
+
+# Example 11: Email with plus addressing
+# Use case: Developer used plus addressing for categorization
+Sarah Wilson,Sarah Wilson,sarah+github@example.com,sarah+github@example.com,Sarah Wilson,Sarah Wilson,sarah@example.com,sarah@example.com
+
+# Example 12: Multiple dots in email (corporate format)
+# Use case: Normalizing corporate email formats
+James Brown,James Brown,james.robert.brown@company.com,james.robert.brown@company.com,James R. Brown,James R. Brown,j.brown@company.com,j.brown@company.com
+
+# Example 13: Different author and committer
+# Use case: Rare scenario where commits were made by one person but committed by another
+# (In most cases, author and committer are the same person)
+Tom Developer,Jane Maintainer,tom@example.com,jane@example.com,Thomas Developer,Jane Smith,thomas.dev@company.com,jane.smith@company.com
+
+# Example 14: Fixing username-style names to real names
+# Use case: Early commits used usernames instead of real names
+dev123,dev123,dev123@localhost,dev123@localhost,David Chen,David Chen,david.chen@company.com,david.chen@company.com
+
+# Example 15: Fixing root/system commits
+# Use case: Some commits may have been made with system accounts
+root,root,root@localhost,root@localhost,System Administrator,System Administrator,sysadmin@company.com,sysadmin@company.com
+
+# Example 16: Name with quotes (requires quote escaping with double quotes)
+# Use case: If name literally contains quote characters (very rare)
+"John ""The Dev"" Doe","John ""The Dev"" Doe",john@example.com,john@example.com,John Doe,John Doe,john.doe@company.com,john.doe@company.com
+
+# Add your custom mappings below this line:
+# -----------------------------------------
