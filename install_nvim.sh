@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+## Installation Log
+# 2026-01-09: Tested on Apple M1, Sequoia 15.4
+# 2026-01-14: Virtual Linux, x86. Ubuntu. `uname -a`: Linux ubuntu-xxx 6.8.0-90-generic #91-Ubuntu SMP PREEMPT_DYNAMIC Tue Nov 18 14:14:30 UTC 2025 x86_64 x86_64 x86_64 GNU/Linux
+## 
+
 set -euo pipefail
 
 # Colors for output
