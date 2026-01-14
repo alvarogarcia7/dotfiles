@@ -363,7 +363,7 @@ require('packer').startup(function(use)
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate',
     config = function()
-      require('nvim-treesitter.configs').setup {
+      require('nvim-treesitter.config').setup { -- AGB 2026-01-14: Error with configs. nvim-treesitter.configs not found
         -- Ensure these parsers are installed
         ensure_installed = {
           'rust',
