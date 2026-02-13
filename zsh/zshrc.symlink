@@ -223,7 +223,21 @@ function git_apply_delta_seconds_from_git_commit_date {
   echo -n "Body:"
   echo "$subject_and_body"
   echo -n "Date:"
-  date --date=@"$new_date"
+
+  if [[ "$OSTYPE" == "linux-gnu"* ]]; then #linux
+      date_formatted=$(date --date=@"$new_date")
+  elif [[ "$OSTYPE" == "darwin"* ]]; then # Mac OSX
+    if [ -z ${TZ+x} ]; then
+      # TZ is unset
+      date_formatted=$(date -r -v "$GIT_DATE_DELTA")
+    else
+      date_formatted=$(TZ=$TZ date -v "$GIT_DATE_DELTA")
+    fi
+  else
+    echo "This script is not supported for this operating system '$OSTYPE'"
+    exit -1
+  fi
+  echo "$date_formatted"
   if [[ "${dry_run}" = "1" ]];then
     echo "use --force to apply changes"
   else
