@@ -209,6 +209,28 @@ function add_delta_seconds_from_git_commit_date {
   GIT_AUTHOR_DATE="$new_date" GIT_COMMITTER_DATE="$new_date" git commit --amend --date="$new_date" --reuse-message="$commit"
 }
 
+function git_apply_delta_seconds_from_git_commit_date {
+  dry_run="${2:-1}"
+  if [[ "${dry_run}" = "--force" ]];then
+    dry_run="0"
+  fi
+  previous_date=$(git log -n1 --format="%at" --date=raw)
+  new_date=$(($previous_date + $1))
+  commit=$(git log -n1 --format="%H")
+  #GIT_AUTHOR_DATE="$new_date" GIT_COMMITTER_DATE="$new_date" git commit --amend --date="$new_date" --reuse-message="$commit"
+  subject_and_body=$(git log -n1 --format="%B")
+  subject_and_body=$(echo "$subject_and_body" | grep -viE "Co-Authored|Haiku|Opus|Sonnet|Claude|Anthropic")
+  echo -n "Body:"
+  echo "$subject_and_body"
+  echo -n "Date:"
+  date --date=@"$new_date"
+  if [[ "${dry_run}" = "1" ]];then
+    echo "use --force to apply changes"
+  else
+    echo "$subject_and_body" | GIT_AUTHOR_DATE="$new_date" GIT_COMMITTER_DATE="$new_date" git commit --amend --date="$new_date" --reset-author -F -
+  fi
+}
+
 alias -s md="subl"
 alias ki="keepassx_internet.sh"
 alias ks="keepassx_sha.sh"
