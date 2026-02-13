@@ -219,7 +219,7 @@ function git_apply_delta_seconds_from_git_commit_date {
   commit=$(git log -n1 --format="%H")
   #GIT_AUTHOR_DATE="$new_date" GIT_COMMITTER_DATE="$new_date" git commit --amend --date="$new_date" --reuse-message="$commit"
   subject_and_body=$(git log -n1 --format="%B")
-  subject_and_body=$(echo "$subject_and_body" | grep -viE "Co-Authored|Haiku|Opus|Sonnet|Claude|Anthropic")
+  subject_and_body=$(echo "$subject_and_body" | grep -viE "Co-Authored|Haiku|Opus|Sonnet|Claude|Anthropic|Tonkotsu|Codex")
   echo -n "Body:"
   echo "$subject_and_body"
   echo -n "Date:"
