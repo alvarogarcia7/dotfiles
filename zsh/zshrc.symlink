@@ -248,6 +248,17 @@ function git_apply_delta_seconds_from_git_commit_date {
   fi
 }
 
+function git_rebase_continue_date {
+  while [ true ]; do
+    git_apply_delta_seconds_from_git_commit_date 0 --force;
+    git rebase --continue
+    if [[ $? -ne 0 ]]; then
+      break;
+    fi;
+  done
+}
+    
+
 alias -s md="subl"
 alias ki="keepassx_internet.sh"
 alias ks="keepassx_sha.sh"
