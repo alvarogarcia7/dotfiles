@@ -617,11 +617,17 @@ install_macos() {
     log_info "Installing Neovim on macOS..."
     
     if ! command -v "$BREW" &> /dev/null; then
-        log_error "Homebrew is not installed. Please install Homebrew first:"
-        log_error "  /bin/bash -c \"\$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\""
-        log_error "Or override the variable BREW=.... with the location:"
-        log_error "  BREW=$HOME/homebrew/bin/homebrew $0 ...."
-        return 1
+        log_info "Homebrew is not installed globally. Trying it locally:"
+        if [[ -f "$HOME/homebrew/bin/brew" ]]; then
+            log_info "Found a file in $HOME/homebrew/bin/brew. Will try it..."
+            BREW="$HOME/homebrew/bin/brew"
+        else
+            log_error "Homebrew is not installed. Please install Homebrew first:"
+            log_error "  /bin/bash -c \"\$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\""
+            log_error "Or override the variable BREW=.... with the location:"
+            log_error "  BREW=$HOME/homebrew/bin/homebrew $0 ...."
+            return 1
+        fi
     fi
     
     log_info "Updating Homebrew..."
