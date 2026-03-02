@@ -220,19 +220,22 @@ function git_apply_delta_seconds_from_git_commit_date {
   #GIT_AUTHOR_DATE="$new_date" GIT_COMMITTER_DATE="$new_date" git commit --amend --date="$new_date" --reuse-message="$commit"
   subject_and_body=$(git log -n1 --format="%B")
   subject_and_body=$(echo "$subject_and_body" | grep -viE "Co-Authored|Haiku|Opus|Sonnet|Claude|Anthropic|Tonkotsu|Codex")
-  echo -n "Body:"
+  echo -n "Body: "
   echo "$subject_and_body"
-  echo -n "Date:"
+  echo -n "Date: "
 
   if [[ "$OSTYPE" == "linux-gnu"* ]]; then #linux
       date_formatted=$(date --date=@"$new_date")
   elif [[ "$OSTYPE" == "darwin"* ]]; then # Mac OSX
-    if [ -z ${TZ+x} ]; then
-      # TZ is unset
-      date_formatted=$(date -r -v "$GIT_DATE_DELTA")
-    else
-      date_formatted=$(TZ=$TZ date -v "$GIT_DATE_DELTA")
+    date_command="date -r \"$new_date\""
+    if [[ -n "${GIT_DATE_DELTA}" ]]; then
+      date_command="$date_command -v \"$GIT_DATE_DELTA\""
     fi
+    if [ ! -z ${TZ+x} ]; then
+	# TZ (timezone) is set
+      date_command="TZ=$TZ $date_command"
+    fi
+    date_formatted="$(eval $date_command)"
   else
     echo "This script is not supported for this operating system '$OSTYPE'"
     exit -1
@@ -282,6 +285,10 @@ export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
 export PATH="/opt/homebrew/opt/openjdk@11/bin:$PATH"
 
 . "$HOME/.local/bin/env"
+
+if [[ -d "$HOME/homebrew/bin" ]]; then
+    export PATH="$PATH:$HOME/homebrew/bin"
+fi
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/Users/alvaro/.sdkman"
