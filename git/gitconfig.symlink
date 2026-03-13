@@ -53,3 +53,5 @@
 	defaultBranch = master
 [fetch]
 	pruneTags = true
+[receive]
+	denyCurrentBranch = updateInstead

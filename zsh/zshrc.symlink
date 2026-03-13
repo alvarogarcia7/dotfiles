@@ -72,7 +72,7 @@ HIST_STAMPS="dd.mm.yyyy"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
 
-source $ZSH/oh-my-zsh.sh
+[[ -f $ZSH/oh-my-zsh.sh ]] && source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
@@ -203,10 +203,16 @@ function git_set_aD_and_cD_to_the_same_value {
 }
 
 function add_delta_seconds_from_git_commit_date {
+  local dry_run
+  dry_run="${2:-0}"
   previous_date=$(git log -n1 --format="%at" --date=raw)
   new_date=$(($previous_date + $1))
   commit=$(git log -n1 --format="%H")
-  GIT_AUTHOR_DATE="$new_date" GIT_COMMITTER_DATE="$new_date" git commit --amend --date="$new_date" --reuse-message="$commit"
+  if [[ "${dry_run}" = "1" ]]; then
+    date -r "$new_date"
+  else
+    GIT_AUTHOR_DATE="$new_date" GIT_COMMITTER_DATE="$new_date" git commit --amend --date="$new_date" --reuse-message="$commit"
+  fi
 }
 
 function git_apply_delta_seconds_from_git_commit_date {
@@ -258,6 +264,42 @@ function git_rebase_continue_date {
   done
 }
     
+function git_set_to_previous_day {
+  local dry_run
+  dry_run="${1:-1}"
+  if [[ "$1" = "--force" ]]; then
+    echo "in mode=dry-run"
+    dry_run="0"
+  else
+    echo "use --force to apply changes"
+  fi
+  add_delta_seconds_from_git_commit_date -86400 "${dry_run}"
+}
+
+function git_set_exact_date {
+  local dry_run
+  dry_run="${2:-0}"
+  new_date="$1"
+  commit=$(git log -n1 --format="%H")
+  if [[ "${dry_run}" = "1" ]]; then
+    date -r "$new_date"
+  else
+    GIT_AUTHOR_DATE="$new_date" GIT_COMMITTER_DATE="$new_date" git commit --amend --date="$new_date" --reuse-message="$commit"
+  fi
+}
+
+function git_set_to_1h_before {
+  local dry_run
+  dry_run="${1:-1}"
+  if [[ "$1" = "--force" ]]; then
+    echo "in mode=dry-run"
+    dry_run="0"
+  else
+    echo "use --force to apply changes"
+  fi
+  add_delta_seconds_from_git_commit_date -3600 "${dry_run}"
+}
+
 
 alias -s md="subl"
 alias ki="keepassx_internet.sh"
@@ -297,10 +339,32 @@ export PATH="/opt/homebrew/opt/openjdk@11/bin:$PATH"
 
 . "$HOME/.local/bin/env"
 
+
 if [[ -d "$HOME/homebrew/bin" ]]; then
     export PATH="$PATH:$HOME/homebrew/bin"
 fi
 
+export PATH="$PATH:/Users/ai/homebrew/bin"
+
+export EDITOR=nvim
+export VISUAL=nvim
+
+. "$HOME/.local/bin/env"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export PATH="$PATH:$HOME/bin/"
+
+# pnpm
+export PNPM_HOME="/Users/ai/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/Users/alvaro/.sdkman"
-[[ -s "/Users/alvaro/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/alvaro/.sdkman/bin/sdkman-init.sh"
+export SDKMAN_DIR="/Users/ai/.sdkman"
+[[ -s "/Users/ai/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/ai/.sdkman/bin/sdkman-init.sh"
