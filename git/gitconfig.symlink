@@ -24,6 +24,7 @@
 	l = log -n1
 	d = diff --color-words
 	dl=log -n1 -p
+	b=branch -l | grep "*" | awk '{print $2}'
 	logauthors=log --format="%aN %aE %cN %cE"
 	workwith=!cat ~/bin/pair_with.sh
 	unchanged=update-index --assume-unchanged 
