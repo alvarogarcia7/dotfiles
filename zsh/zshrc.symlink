@@ -132,7 +132,7 @@ alias nrd="npm run dev"
 #alias standard="$(npm prefix)/node_modules/standard/bin/cmd.js --fix"
 
 ## Node specifics
-export NVM_DIR="/Users/alvaro/.nvm"
+export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 alias npm_i="npm install --loglevel warn"
@@ -357,7 +357,7 @@ export PATH="$PATH:$HOME/.config/emacs/bin"
 export PATH="$HOME/.emacs.d/bin:$PATH"
 
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
-export PATH="$PATH:/Users/alvaro/.local/bin:$HOME/.local/bin"
+export PATH="$PATH:$HOME/.local/bin"
 
 git config --global core.excludesFile '~/.gitignore'
 
@@ -378,7 +378,7 @@ if [[ -d "$HOME/homebrew/bin" ]]; then
     export PATH="$PATH:$HOME/homebrew/bin"
 fi
 
-export PATH="$PATH:/Users/ai/homebrew/bin"
+export PATH="$PATH:$HOME/homebrew/bin"
 
 export EDITOR=nvim
 export VISUAL=nvim
@@ -392,7 +392,7 @@ export NVM_DIR="$HOME/.nvm"
 export PATH="$PATH:$HOME/bin/"
 
 # pnpm
-export PNPM_HOME="/Users/ai/Library/pnpm"
+export PNPM_HOME="$HOME/Library/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
@@ -400,5 +400,5 @@ esac
 # pnpm end
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/Users/ai/.sdkman"
-[[ -s "/Users/ai/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/ai/.sdkman/bin/sdkman-init.sh"
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
