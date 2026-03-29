@@ -110,7 +110,9 @@ alias keepassx="keeweb"
 export PATH=$PATH:~/bin
 export EDITOR=vim
 
-source ~/.extra
+if [[ -f ~/.extra ]]; then
+  source ~/.extra
+fi
 
 ## docker
 
