@@ -290,7 +290,7 @@ function git_rebase_continue_date {
   fi
   prefix="${1}"
   while [ true ]; do
-    git_apply_delta_seconds_from_git_commit_date "${prefix}" 0 --force;
+    git_apply_delta_seconds_from_git_commit_date.sh "${prefix}" 0 --force;
     git rebase --continue
     if [[ $? -ne 0 ]]; then
       break;
