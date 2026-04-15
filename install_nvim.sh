@@ -79,6 +79,7 @@ check_prerequisites() {
     
     check_prerequisite "git" "Git" || missing=1
     check_prerequisite "curl" "curl" || missing=1
+    check_prerequisite "unzip" "unzip" || missing=1
     
     # Check for C compiler (gcc or clang)
     if command -v gcc &> /dev/null || command -v clang &> /dev/null; then
