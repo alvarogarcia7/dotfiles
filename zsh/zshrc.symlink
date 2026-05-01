@@ -269,18 +269,22 @@ function add_delta_seconds_from_git_commit_date {
 #}
 
 function git_rebase_custom {
-  if [[ "$#" -lt 1 ]]; then
-    echo "usage: $0/git_rebase_custom prefix [branch = main] [time_delta_seconds = 0]"
+  if [[ "$#" -lt 0 ]]; then
+    echo "usage: $0/git_rebase_custom [prefix = ''] [branch = master/main] [time_delta_seconds = 0]"
     return 1
   fi
-  prefix="${1}"
-  branch="${2:-main}"
+  local branch_default="master"
+  if [[ $(git branch -v | grep -c " ${branch_default}") -eq 0 ]]; then
+    branch_default="main"
+  fi
+  prefix="${1:-}"
+  branch="${2:-$branch_default}"
   time_delta="${3:-0}"
-  if [[ ! "$prefix" == "["* ]]; then
+  if [[ ! -z "${prefix}" ]] && [[ ! "$prefix" == "["* ]]; then
     prefix="[${prefix}]"
   fi
-  set -x
- git rebase "${branch}" -x "$HOME/bin/git_apply_delta_seconds_from_git_commit_date.sh \"${prefix}\" ${time_delta} --force"
+
+  git rebase "${branch}" -x "$HOME/bin/git_apply_delta_seconds_from_git_commit_date.sh \"${prefix}\" ${time_delta} --force"
 }
 
 function git_rebase_continue_date {
