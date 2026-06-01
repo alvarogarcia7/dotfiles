@@ -168,6 +168,28 @@ function chpwd() {
     source_env "."
 }
 
+cd_to_dir() {
+    local _PWD="$1"
+    local max_depth="${2:-1}" # project/YYY and project/XXX/YYY
+    cd "$(realpath $_PWD)"
+    #echo "Currently at: $(pwd)"
+    dirs=""
+    dirs+=$(fd -t d -d "${max_depth}" . )
+    dirs+=$(fd -t d -d "${max_depth}" . tii/)
+    selected_dir=$(echo "$dirs" | fzf +m --height 50% --preview 'ls -lah {}')
+    #echo $selected_dir
+    if [[ -n "$selected_dir" ]]; then
+        # Change to the selected directory
+        # echo "changing to $selected_dir"
+        if [[ ! -d "$selected_dir" ]]; then
+          echo "folder $selected_dir doesnt exist"
+          exit 1
+        fi
+        cd "$selected_dir" 
+    fi
+}
+alias p="cd_to_dir \"$HOME/Documents/project/\""
+
 
 function pair_with_ {
   export GIT_COMMITTER_NAME="$1"
@@ -401,6 +423,15 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+#
+
+fpath=(~/.zsh/completions $fpath)
+fpath+=~/.zfunc; 
+
+# For performance reasons, make sure you only autoload once
+autoload -Uz compinit; compinit
+
+zstyle ':completion:*' menu select
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
