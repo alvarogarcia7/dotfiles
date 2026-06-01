@@ -56,3 +56,50 @@
 	pruneTags = true
 [receive]
 	denyCurrentBranch = updateInstead
+
+# 2026-06-01 18:56:34 AGB
+# From https://blog.gitbutler.com/how-git-core-devs-configure-git
+[column]
+  ui = auto
+[branch]
+  sort = -committerdate
+[tag]
+  sort = version:refname
+[init]
+  defaultBranch = main
+[diff]
+  algorithm = histogram
+  colorMoved = plain
+  mnemonicPrefix = true
+  renames = true
+[push]
+  default = simple
+  autoSetupRemote = true
+  followTags = true
+[fetch]
+  prune = true
+  pruneTags = true
+  all = true
+
+# why the hell not?
+
+[help]
+  autocorrect = prompt
+
+[pull]
+  rebase = true
+
+[rerere]
+  enabled = true
+  autoUpdate = true
+
+[rebase]
+#      autoSquash = true
+  autoStash = true
+
+[merge]
+# zdiff3 adds original text markers and removes matching lines from conflict regions
+# https://git-scm.com/docs/git-config#Documentation/git-config.txt-mergeconflictStyle
+  conflictStyle = zdiff3
+  autoStash = true
+
