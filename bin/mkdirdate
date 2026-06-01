@@ -18,6 +18,7 @@ create_dir() {
   date_str=$(get_date)
   local dir_name="${date_str}_$name"
   mkdir -p "$dir_name"
+  echo "created folder $dir_name"
 }
 
 main() {
