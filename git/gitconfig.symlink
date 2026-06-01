@@ -9,8 +9,8 @@
 	trustExitCode = true
 [user]
 	name = \"Alvaro Garcia\"
-    email = alvarogarcia7@users.noreply.github.com
-    # see file ~/.extra
+  email = alvarogarcia7@users.noreply.github.com
+  # see file ~/.extra
 
 [alias]
 	commitatdate = !bash commitatdate.sh 
@@ -32,18 +32,18 @@
 #problem: adds two times the parameter
 #	i = !echo "$@" >> .gitignore
 	p = pull --rebase --prune --autostash
-    pruneold = !git branch -r | awk '{print $1}' | egrep -v -f /dev/fd/0 < $(git branch -vv | grep origin) | awk '{print $1}' | xargs git branch -d 
+  pruneold = !git branch -r | awk '{print $1}' | egrep -v -f /dev/fd/0 < $(git branch -vv | grep origin) | awk '{print $1}' | xargs git branch -d 
 	pruneoldforce = !git branch -r | awk '{print $1}' | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) | awk '{print $1}' | xargs git branch -D
 [push]
 	default = simple
-    autoSetupRemote = true
+  autoSetupRemote = true
 [gui]
 	editor = vim
 [branch]
 	autosetuprebase = always
 [mergetool "diffmerge"]
-    #cmd = /Users/alvaro/bin/diff-wrapper.sh
-    cmd = "/Users/alvaro/bin/diff-wrapper.sh \"$LOCAL\" \"$REMOTE\""
+  #cmd = /Users/alvaro/bin/diff-wrapper.sh
+  cmd = "$HOME/bin/diff-wrapper.sh \"$LOCAL\" \"$REMOTE\""
 
 [filter "lfs"]
 	clean = git-lfs clean -- %f
