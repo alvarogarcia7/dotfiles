@@ -33,7 +33,7 @@
 #problem: adds two times the parameter
 #	i = !echo "$@" >> .gitignore
 	p = pull --rebase --prune --autostash
-  ps = push --push-option=ci.skip
+  ps = !bash ~/bin/git-ps.sh
   pu = push
   pruneold = !git branch -r | awk '{print $1}' | egrep -v -f /dev/fd/0 < $(git branch -vv | grep origin) | awk '{print $1}' | xargs git branch -d 
 	pruneoldforce = !git branch -r | awk '{print $1}' | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) | awk '{print $1}' | xargs git branch -D
