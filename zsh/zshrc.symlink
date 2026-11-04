@@ -433,6 +433,10 @@ autoload -Uz compinit; compinit
 
 zstyle ':completion:*' menu select
 
+## Prompt: prefix the hostname, to tell apart local and remote (ssh) sessions
+## Applied after oh-my-zsh has set $PROMPT, so it wraps whatever theme is active
+PROMPT="%F{yellow}%m%f ${PROMPT}"
+
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
