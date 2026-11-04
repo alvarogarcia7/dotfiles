@@ -2,3 +2,6 @@
 
 emacs/
 
+
+# Python bytecode from running the rewrite-git-history script
+bin/rewrite-git-history/__pycache__/
