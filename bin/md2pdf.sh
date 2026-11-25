@@ -2,7 +2,7 @@
 
 ## https://github.com/alvarogarcia7/markdown-to-pdf
 
-set euxo -pipefail
+set -euxo pipefail
 
 file="$1"
 
