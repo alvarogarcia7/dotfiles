@@ -92,3 +92,114 @@
 
 ;; https://emacs.stackexchange.com/questions/29152/how-to-use-global-tags-list-when-tagging-text-files-with-org-mode-and-helm
 (setq org-complete-tags-always-offer-all-agenda-tags t)
+
+;; 2026-11-25 15:59:16 AGB
+;; This part is unstable: I want to automatically propose the datetime when SPC m d t/T
+;; Link: https://share.google/aimode/kgOWm3sHbxcA6hcRu
+
+
+
+;;in emacs how to org-time-stamp with the default value
+;;
+;;To insert an Org timestamp using the default value (today's date and/or current time), you can either accept the prompt immediately or bypass it using prefix arguments.
+;;
+;;Interactive Keybindings
+;;
+;;• Accept the default date at the prompt. Press C-c . (org-time-stamp), then immediately press RET without typing anything to insert today's date (<YYYY-MM-DD Day>).
+;;• Accept the default date and time at the prompt. Press C-u C-c ., then immediately press RET to insert today's date with the current time (<YYYY-MM-DD Day HH:MM>).
+;;• Insert current date and time immediately (no prompt). Press C-u C-u C-c . (two universal prefix arguments). According to the Org Mode Manual, this skips the interactive calendar prompt and inserts an active timestamp with the current time right away.
+;;• Insert an inactive timestamp. Replace . with ! in any of the commands above (for example, C-u C-u C-c ! for the current date and time without prompting).
+;;
+;;Emacs Lisp (Programmatic)
+;;
+;;If you are writing a custom function or capture template in Elisp, use org-insert-time-stamp:
+;;elisp
+;;;; Insert active timestamp with current date only
+;;(org-insert-time-stamp (current-time))
+;;
+;;;; Insert active timestamp with current date and time
+;;(org-insert-time-stamp (current-time) t)
+;;
+;;;; Insert inactive timestamp with current date and time
+;;(org-insert-time-stamp (current-time) t t)
+;;Kodu dikkatli kullanın.
+;;If you're trying to automate this, let me know:
+;;• Trigger event (creating a heading, changing a TODO state, or using a capture template)
+;;• Timestamp type (active <...> or inactive [...])
+;;I can provide the exact Elisp snippet for your config.
+;;Yapay zeka hata yapabildiğinden verdiği yanıtları doğrulayın 
+;;• 
+;;Stack Overflow
+;;How to insert current time in the emacs org
+;;July 2, 2012 — In emacs-lisp, you could use (org-insert-time-stamp (current-time) t) With default settings, it will generate a time stamp on the ...
+;;• 
+;;Org mode
+;;Creating Timestamps (The Org Manual)
+;;With two prefix arguments, insert an active timestamp with the current time without prompting. C-c ! ( org-timestamp-inactive ) bu...
+;;• 
+;;Org mode
+;;The date/time prompt (The Org Manual)
+;;Org mode date/time prompt: accepts flexible string formats starting at string beginning, deriving unspecified values from default ...
+;;
+;;how to set the default (org-insert-time-stamp (current-time) t t)
+;;
+;;To make (org-insert-time-stamp (current-time) t t) your default behavior—meaning it inserts an inactive timestamp with the current date and time immediately without prompting—you can either create a custom keybinding or override the default timestamp command in your Emacs configuration (init.el).
+;;
+;;Option 1: Bind a Custom Shortcut (Recommended)
+;;
+;;This leaves standard C-c . and C-c ! behavior intact while giving you a fast, one-step shortcut for your preferred format:
+;;elisp
+;;(defun my/org-insert-current-inactive-timestamp ()
+;;  "Insert an inactive timestamp with the current date and time without prompting."
+;;  (interactive)
+;;  (org-insert-time-stamp (current-time) t t))
+;;
+;;(with-eval-after-load 'org
+;;  (define-key org-mode-map (kbd "C-c t") #'my/org-insert-current-inactive-timestamp))
+;;Kodu dikkatli kullanın.
+;;(You can replace "C-c t" with any key combination you prefer.)
+;;
+;;Option 2: Override C-c ! (Inactive Timestamp Command)
+;;
+;;If you want C-c ! (org-time-stamp-inactive) to insert the current date and time immediately without opening the prompt, add this to your init.el:
+;;elisp
+;;(with-eval-after-load 'org
+;;  (define-key org-mode-map (kbd "C-c !")
+;;    (lambda ()
+;;      (interactive)
+;;      (org-insert-time-stamp (current-time) t t))))
+;;Kodu dikkatli kullanın.
+;;
+;;Option 3: Override C-c . (Active Timestamp Command)
+;;
+;;If you want the primary C-c . shortcut to run this instead:
+;;elisp
+;;(with-eval-after-load 'org
+;;  (define-key org-mode-map (kbd "C-c .")
+;;    (lambda ()
+;;      (interactive)
+;;      (org-insert-time-stamp (current-time) t t))))
+;;Kodu dikkatli kullanın.
+;;If you also want this timestamp added automatically without pressing any keys, let me know:
+;;• When it should happen (e.g., creating a new heading, saving a file, or via org-capture)
+;;• Where it should go (e.g., inside a :CREATED: property drawer or directly under the heading)
+;;I can share the hook or template setup for that.
+
+(defun insert-now-timestamp()
+  "Insert org mode timestamp at point with current date and time."
+  (interactive)
+  (org-insert-time-stamp (current-time) t))
+
+(defun my/org-insert-current-inactive-timestamp ()
+  "Insert an inactive timestamp with the current date and time without prompting."
+  (interactive)
+  (org-insert-time-stamp (current-time) t t))
+
+;;(with-eval-after-load 'org
+;;  (define-key org-mode-map (kbd "SPC m d 5") #'my/org-insert-current-inactive-timestamp))
+;;
+;;(with-eval-after-load 'org
+;;  (define-key org-mode-map (kbd "SPC m d t")
+;;    (lambda ()
+;;      (interactive)
+;;      (org-insert-time-stamp (current-time) t t))))

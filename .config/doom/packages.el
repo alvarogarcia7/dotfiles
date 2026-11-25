@@ -49,3 +49,7 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
 
+(package! let-completion
+  :recipe (:host github :repo "gggion/let-completion.el"))
+
+(package! dirvish :pin nil)
